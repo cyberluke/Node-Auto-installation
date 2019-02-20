@@ -1317,7 +1317,8 @@ sync_method(){
 		"Classic syncronisation")
 			cd $MAINNET_DIR
 			./start.sh --delete-all-blocks --genesis-json genesis.json
-			printf "Go to $MAINNET and check file stderr.txt is synchronization started?\n"
+			printf "Go to $MAINNET and check file stderr.txt if everything ok\n"
+			printf "Check block status with: cleos get info\n"
 			break
 			;;
 		"Using EOS Node Tools snapshot")
