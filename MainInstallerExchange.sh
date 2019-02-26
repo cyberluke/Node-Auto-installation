@@ -37,6 +37,7 @@ MAINNET="Main"
 MAINNET_BIN_DIR="$GLOBAL_PATH/bin"
 DATE=$(date +%Y-%m-%d)
 EOS_SOURCE_DIR=""
+ACCOUNT_NAME=""
 
 if [[ -f $(find /usr -type f -name curl) ]] && [[ -f $(find /usr -type f -name jq) ]]
 then
@@ -163,15 +164,15 @@ GENESIS='{
 #####################################################
 
 config_func(){
-			printf "Enter Main Net Account NAME (Exchange filtering): "
-			read name
-			until [[ $name =~ [a-z1-5]{12} ]]
-			do
-				printf "Account name should have length 12, lowercase a-z, number 1-5\n"
-				printf "Enter account NAME: "
-				read name
-			done
-			ACCOUNT_NAME=$name
+			#printf "Enter Main Net Account NAME (Exchange filtering): "
+			#read name
+			#until [[ $name =~ [a-z1-5]{12} ]]
+			#do
+			#	printf "Account name should have length 12, lowercase a-z, number 1-5\n"
+			#	printf "Enter account NAME: "
+			#	read name
+			#done
+			#ACCOUNT_NAME=$name
 	####
 	#VARIABLES SECTION
 	#
@@ -651,8 +652,8 @@ p2p-peer-address = seed2.greymass.com:9876'
 	    # peer-key =
 	    # peer-private-key =
 
-        actor-whitelist = '$ACCOUNT_NAME'
-        filter-on = '$ACCOUNT_NAME':transfer:
+        #actor-whitelist = '$ACCOUNT_NAME'
+        #filter-on = '$ACCOUNT_NAME':transfer:
 
 	    plugin = eosio::producer_plugin
 	    plugin = eosio::chain_api_plugin
