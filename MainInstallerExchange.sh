@@ -15,7 +15,7 @@
 install_tools(){
 	if [[ $OS == "ubuntu" ]] || [[ $OS == "debian" ]]
 	then
-		sudo apt -y update && sudo apt -y install git wget curl jq
+		sudo apt -y update; sudo apt -y install jq; sudo apt -y install git wget curl
 	elif [[ $OS == "centos" ]]
 	then
 		yum -y update && yum -y install git wget sudo curl epel-release; yum -y install jq
