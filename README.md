@@ -11,6 +11,6 @@ Please download and run it. It works for all operation system which support EOSI
   
 There will be few option for installing - you can choose from binaries or sources, and also how to do synchronisation - classcial way or using a snapshot (this feature works only for ubuntu 16 and 18)
 
-More info is comming...
+Node snapshot synchronisation: https://eosnode.tools/blocks
 
 by: <a target="_blank" href="http://CryptoLions.io">CryptoLions.io</a> & <a target="_blank" href="http://github.com/cyberluke">Cyberluke</a>

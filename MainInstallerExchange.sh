@@ -1312,6 +1312,7 @@ search_previous_version(){
 sync_method(){
 	printf "\n"
 	printf "Please choose a way to sync your node with Main Net :\n"
+	printf "HINT: Rerun this script using screen -S command!\n"
 	select choose in "Classic syncronisation" "Using EOS Node Tools (by BlockMatrix) snapshot (Ubuntu/Centos/Debian only)" "Exit"; do
 	case $choose in
 		"Classic syncronisation")
@@ -1321,7 +1322,7 @@ sync_method(){
 			printf "Check block status with: cleos get info\n"
 			break
 			;;
-		"Using EOS Node Tools snapshot")
+		"Using EOS Node Tools (by BlockMatrix) snapshot (Ubuntu/Centos/Debian only)")
 			printf "\n"
             
 			if [[ ! -d $SNAPSHOT_DIR ]]
