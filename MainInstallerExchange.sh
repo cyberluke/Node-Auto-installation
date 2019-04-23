@@ -41,12 +41,7 @@ ACCOUNT_NAME=""
 
 if [[ -f $(find /usr -type f -name curl) ]] && [[ -f $(find /usr -type f -name jq) ]]
 then
-	TAG=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ver' | tr -d '"')
-	EOS_VER=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ver' | tr -d '"' | grep -o '[0-9]\.[0-9]\.[0-9]')
-    EOSIO_DEB16=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ubuntu16_bin' | tr -d '"')
-	EOSIO_DEB18=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ubuntu18_bin' | tr -d '"')
-	EOSIO_FEDORA27=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.fedora27_bin' | tr -d '"')
-	EOSIO_CENTOS7=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.centos7_bin' | tr -d '"')
+    # noop
 else
 	clear
 	if [[ $OS == "centos" || $OS == "fedora" || $OS == "ubuntu" ]]
@@ -86,14 +81,28 @@ else
 		esac
 	done
 
-	TAG=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ver' | tr -d '"')
-	EOS_VER=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ver' | tr -d '"' | grep -o '[0-9]\.[0-9]\.[0-9]')
-    EOSIO_DEB16=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ubuntu16_bin' | tr -d '"')
-	EOSIO_DEB18=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ubuntu18_bin' | tr -d '"')
-	EOSIO_FEDORA27=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.fedora27_bin' | tr -d '"')
-	EOSIO_CENTOS7=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.centos7_bin' | tr -d '"')
 fi
 
+printf "\n"
+printf "Do you want to check out DEV branch?\n"
+select answer in "YES" "NO"; do
+	case $answer in 
+		"YES")
+			TAG="develop"
+			break
+			;;
+		"NO")
+			TAG=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ver' | tr -d '"')
+			;;
+	esac
+done
+
+EOS_VER=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ver' | tr -d '"' | grep -o '[0-9]\.[0-9]\.[0-9]')
+EOSIO_DEB16=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ubuntu16_bin' | tr -d '"')
+EOSIO_DEB18=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.ubuntu18_bin' | tr -d '"')
+EOSIO_FEDORA27=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.fedora27_bin' | tr -d '"')
+EOSIO_CENTOS7=$(curl -sS https://monitor.jungletestnet.io/version.json | jq '.centos7_bin' | tr -d '"')
+	
 ################################################################
 #
 #CONFIG SECTION VAIRABLES
